@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="A responsive Student Management System built using HTML, CSS and JavaScript."
+    />
+
+    <title>Student Management System</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- Navigation -->
+
+    <header class="header">
+      <div class="container nav-container">
+        <a href="#" class="logo"> Student Manager </a>
+
+        <nav class="navbar">
+          <a href="#dashboard"> Dashboard </a>
+
+          <a href="#add-student"> Add Student </a>
+
+          <a href="#records"> Records </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+
+    <main>
+      <!-- Hero / Dashboard -->
+
+      <section class="hero" id="dashboard">
+        <div class="container hero-content">
+          <div>
+            <p class="small-heading">STUDENT MANAGEMENT</p>
+
+            <h1>Manage student records easily.</h1>
+
+            <p class="hero-text">
+              Add, update, search and manage student information from one place.
+            </p>
+
+            <a href="#add-student" class="primary-button"> Add New Student </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Statistics -->
+
+      <section class="container stats-section">
+        <div class="stat-card">
+          <div class="stat-icon">#</div>
+
+          <div>
+            <h2 id="totalStudents">0</h2>
+
+            <p>Total Students</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">%</div>
+
+          <div>
+            <h2 id="averageMarks">0</h2>
+
+            <p>Average Marks</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">↑</div>
+
+          <div>
+            <h2 id="highestMarks">0</h2>
+
+            <p>Highest Marks</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">✓</div>
+
+          <div>
+            <h2 id="passingStudents">0</h2>
+
+            <p>Passing Students</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Add Student -->
+
+      <section class="container section" id="add-student">
+        <div class="section-heading">
+          <div>
+            <p class="small-heading">STUDENT DETAILS</p>
+
+            <h2>Add Student</h2>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <form id="studentForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="studentName"> Student Name </label>
+
+                <input
+                  type="text"
+                  id="studentName"
+                  placeholder="Enter student name"
+                  autocomplete="off"
+                />
+
+                <span class="error" id="nameError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="rollNumber"> Roll Number </label>
+
+                <input
+                  type="text"
+                  id="rollNumber"
+                  placeholder="Enter roll number"
+                  autocomplete="off"
+                />
+
+                <span class="error" id="rollError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="course"> Course </label>
+
+                <select id="course">
+                  <option value="">Select Course</option>
+
+                  <option value="CSE">Computer Science</option>
+
+                  <option value="ECE">Electronics</option>
+
+                  <option value="IT">Information Technology</option>
+
+                  <option value="ME">Mechanical</option>
+                </select>
+
+                <span class="error" id="courseError"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="marks"> Marks </label>
+
+                <input
+                  type="number"
+                  id="marks"
+                  min="0"
+                  max="100"
+                  placeholder="Enter marks"
+                />
+
+                <span class="error" id="marksError"></span>
+              </div>
+            </div>
+
+            <div class="form-buttons">
+              <button type="submit" class="primary-button" id="submitButton">
+                Add Student
+              </button>
+
+              <button
+                type="button"
+                class="secondary-button hidden"
+                id="cancelButton"
+              >
+                Cancel Edit
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Records -->
+
+      <section class="container section" id="records">
+        <div class="section-heading records-heading">
+          <div>
+            <p class="small-heading">STUDENT DATABASE</p>
+
+            <h2>Student Records</h2>
+
+            <p id="recordCount">0 records</p>
+          </div>
+        </div>
+
+        <!-- Search and Filters -->
+
+        <div class="filter-card">
+          <div class="search-box">
+            <label for="searchInput"> Search </label>
+
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Search by name or roll number..."
+            />
+          </div>
+
+          <div class="filter-box">
+            <label for="filterCourse"> Course </label>
+
+            <select id="filterCourse">
+              <option value="all">All Courses</option>
+
+              <option value="CSE">CSE</option>
+
+              <option value="ECE">ECE</option>
+
+              <option value="IT">IT</option>
+
+              <option value="ME">ME</option>
+            </select>
+          </div>
+
+          <div class="filter-box">
+            <label for="sortStudents"> Sort </label>
+
+            <select id="sortStudents">
+              <option value="default">Default</option>
+
+              <option value="nameAsc">Name A-Z</option>
+
+              <option value="nameDesc">Name Z-A</option>
+
+              <option value="marksHigh">Marks High-Low</option>
+
+              <option value="marksLow">Marks Low-High</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Table -->
+
+        <div class="table-card">
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Roll No.</th>
+
+                  <th>Name</th>
+
+                  <th>Course</th>
+
+                  <th>Marks</th>
+
+                  <th>Grade</th>
+
+                  <th>Status</th>
+
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="studentTableBody"></tbody>
+            </table>
+          </div>
+
+          <div id="emptyMessage" class="empty-message">
+            <div class="empty-icon">—</div>
+
+            <h3>No records found</h3>
+
+            <p>Add a student or change your search and filter options.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+
+    <footer class="footer">
+      <div class="container">
+        <p>Student Management System</p>
+
+        <p class="footer-small">Final Web Development Project</p>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
