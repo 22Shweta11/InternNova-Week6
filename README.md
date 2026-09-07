@@ -55,7 +55,7 @@ The project can be improved by adding student attendance, login functionality, s
 
 ## Repository
 
-GitHub Repository: Add your GitHub repository link here.
+GitHub Repository:(https://github.com/22Shweta11/InternNova-Week6)
 
 ## Live Website
 
